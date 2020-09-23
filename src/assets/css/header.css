@@ -1,0 +1,36 @@
+.header{
+    /* width: 100%; */
+    background-color: white;
+    padding:0 10px ;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.header__imageContainer{
+    flex: 0.6;
+}
+.header__linksContainer{
+    flex: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px 0;
+}
+a{
+    /* padding: 0 0.2em; */
+    color: #000;
+    display: inline;
+    font-size: 10%;
+}
+.avatar{
+    display: inline;
+}
+.header__image{
+    object-fit: contain;
+    width: 15vw;
+   
+    
+}

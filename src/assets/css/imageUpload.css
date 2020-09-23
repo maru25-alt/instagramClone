@@ -1,0 +1,49 @@
+
+
+.createpost-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.close__icon{
+    flex: 0.2;
+    width: 2em;
+}
+h1{
+    flex: 0.8;
+}
+
+.createpost__form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.textarea__caption{
+    border: rgb(90, 84, 84) 1px solid;
+    border-radius: 10px solid;
+}
+
+.createpost__imageContainer{
+    padding: 20px 0;
+    max-height: 40vh;
+    object-fit: contain;
+    width: 100%;
+}
+
+
+.share-button{
+    width: 30%;
+    float: right;
+}
+
+.progress__bar{
+    padding: 5px;
+    margin-bottom: 10px;
+    color: lightskyblue;
+    background-color: lightskyblue;
+}
