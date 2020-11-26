@@ -10,8 +10,6 @@ a:hover{
 .app{
     background-color: #efefef;
     min-height: 100vh;
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
     width: 100%;
 }
 
