@@ -1,11 +1,11 @@
-
-.posts{
-    display: flex;
-    place-items: center;
-    flex-direction: column;
-    margin-top: 3em;
+.posts {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  margin-top: 3em;
 }
-.post{
+.post {
+  min-width: 500px;
   max-width: 500px;
   background-color: white;
   border: 1px solid lightgray;
@@ -13,72 +13,87 @@
   margin-bottom: 45px;
 }
 
-.post__image{
-    width: 100%;
-    object-fit: contain;
-    border-bottom: 1px solid lightgray;
-    border-top: 1px solid lightgray;
-    
+.post__image {
+  width: 100%;
+  object-fit: contain;
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
 }
 
-.post__text{
-    font-weight: normal;
-    padding: 20px;
+.post__text {
+  font-weight: normal;
+  padding-bottom: 5px;
 }
-.post__header{
-    display: flex;
-    align-items: center;
-    padding: 20px;
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: space-between;
 }
-.post__avatar{
-    margin-right: 10px;
+.post__headerLeft {
+  display: flex;
+  align-items: center;
 }
-
-.buttons__section{
-    display: flex;
-    align-items: center;
-    width: 20%;
-}
-
-.post__date{
-    margin-bottom: 10px;
-    opacity: 0.5;
-}
-.comment{
-    margin-bottom: 5px;
-}
-.comments__section{
-    margin-left: 20px;
-    margin-bottom: 30px;
+.post__avatar {
+  margin-right: 10px;
 }
 
-.comment__date{
-    opacity: 0.5;
-    font-size: x-small;
+.buttons__section {
+  display: flex;
+  justify-content: space-between;
 }
 
-.create__commentForm{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    border: 1px #e3e3e3 solid;
-    border-radius: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
+.buttons__sectionLeft {
+  display: flex;
 }
 
-.create__commentTextarea{
-    border: none;
-    flex: 1;
-    outline: none;
+.buttons__sectionLeft .MuiIconButton-root {
+  padding: 0 !important;
 }
 
-.create__commentButton{
-    flex: 0;
-    border: none;
-    background-color: transparent;
-    color: lightskyblue;
+.post__date {
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+.comment {
+  margin-bottom: 5px;
+}
+.comments__section {
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.comment__date {
+  opacity: 0.5;
+  font-size: x-small;
+}
+
+.create__commentForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px #e3e3e3 solid;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.create__commentTextarea {
+  border: none;
+  flex: 1;
+  outline: none;
+}
+
+.create__commentButton {
+  flex: 0;
+  border: none;
+  background-color: transparent;
+  color: lightskyblue;
+}
+
+.delete__button {
+  color: #bd110b !important;
 }

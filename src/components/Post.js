@@ -7,24 +7,46 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import Comment from './Comment'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import { db } from '../store/firebase';
 import AddComment from './CreateComment';
 import moment from 'moment';
-import FullAddComment from './FullAddComment'
+import FullAddComment from './FullAddComment';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 function Post({post, id}) {
-    const {imageUrl, username, caption,createdAt, userPhotoUrl,  likes} = post;
+    const {imageUrl, username, caption,createdAt, userPhotoUrl,  likes, userUID} = post;
     const [comments, setComments] = useState([])
     const [like, setLike] = useState(false)
     const [open, setOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const currentUserUID = localStorage.getItem('userUID');
 
     const handleClickOpen = () => {
       setOpen(true);
     };
-  
     const handleClose = () => {
       setOpen(false);
     };
+
+    const handleOpenMenu = (event) => {
+      console.log("clicked")
+      setAnchorEl(event.currentTarget);
+    }
+
+    const handleMenuClose = () => {
+      setAnchorEl(null);
+    }
+
+    const handleDelete = () => {
+      db.collection('posts').doc(id).delete().then(() => {
+         console.log("deleted")
+         setAnchorEl(null);
+      })
+     
+    }
     
     
     const addLike = () => {
@@ -70,11 +92,19 @@ function Post({post, id}) {
         <div className="post">
           {/* header   */}
           <div className="post__header">
+            <div className="post__headerLeft">
               <Avatar
-              className="post__avatar"
-              src={userPhotoUrl}
-              alt={username} />
-              <h3>{username}</h3>
+                className="post__avatar"
+                src={userPhotoUrl}
+                alt={username} />
+                <h3>{username}</h3>
+            </div>
+            <div>
+              <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpenMenu}>
+                  <MoreHorizIcon/>
+              </IconButton>
+            </div>
+
           </div>
           {/* image */}
           <img
@@ -84,6 +114,7 @@ function Post({post, id}) {
 
           {/* likes */}
           <div className="buttons__section">
+            <div className="buttons__sectionLeft">
               <IconButton onClick={addLike}>
                  {like ? <FavoriteIcon/> : <FavoriteBorderIcon/>} 
               </IconButton>
@@ -93,7 +124,12 @@ function Post({post, id}) {
               <IconButton>
                   <TelegramIcon/>
               </IconButton>
-              
+            </div>
+              <div>
+                <IconButton >
+                  <BookmarkBorderIcon></BookmarkBorderIcon>
+                </IconButton>
+              </div> 
           </div>
           <FullAddComment open={open} handleClose={handleClose} postId={id}/>
           {/* username */}
@@ -110,6 +146,21 @@ function Post({post, id}) {
                 </div>
                 
            </div>
+
+
+           <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                {currentUserUID === userUID && <MenuItem onClick={handleDelete} className="delete__button">Delete</MenuItem>}
+                <MenuItem onClick={handleMenuClose}>Copy Link</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Share to</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Mute</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Cancel</MenuItem>
+              </Menu>
         </div>
     )
 }

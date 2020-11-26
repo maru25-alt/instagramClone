@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import * as admin from 'firebase-admin';
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyC0zo_MS9czX_FwhV-2nGrhFW99QSZvsTQ",
@@ -11,8 +12,10 @@ const firebaseApp = firebase.initializeApp({
   });
 
 
+
   const db = firebaseApp.firestore();
   const storage = firebaseApp.storage();
   const auth = firebaseApp.auth();
+  const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-  export {db, storage, auth , firebase}
+  export {db, storage, auth , firebase, timestamp}

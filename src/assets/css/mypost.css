@@ -1,0 +1,6 @@
+.posts {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}

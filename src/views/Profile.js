@@ -1,104 +1,75 @@
 import React, {useState, useEffect} from 'react'
-import {Avatar, Grid} from '@material-ui/core';
+import {Avatar} from '@material-ui/core';
 import '../assets/css/profile.css'
-import AddIcon from '@material-ui/icons/AddCircle';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import AddIcon from '@material-ui/icons/Add';
 import { db } from '../store/firebase';
-import ViewPost from '../components/modals/ViewPost'
-import NewPost from '../components/CreatePost'
-import EditPost from '../components/modals/EditUser'
+import NewPost from '../components/CreatePost';
+import {useHistory} from 'react-router-dom';
+import Posts from '../components/ProfilePosts';
+import Loading from '../components/Loading';
+
+const photoUrl = localStorage.getItem('userPhotoUrl');
+const username = localStorage.getItem('userName');
+const email = localStorage.getItem('userEmail');
+const userUID = localStorage.getItem('userUID');
+
 
 function Profile() {
-  const photoUrl = localStorage.getItem('userPhotoUrl');
-  const username = localStorage.getItem('userName');
-  const email = localStorage.getItem('userEmail');
-  const userUID = localStorage.getItem('userUID');
+  
+  const history = useHistory();
 
   const [posts, setPosts] = useState([]);
-  const [selectedPosts, setSelectedPosts] = useState({})
   const [open, setOpen] = useState(false);
-  const [openPost, setOpenPost] = useState(false);
-  const [openProfile, setOpenProfile] = useState(false);
+  const [loading, setloading] = useState(false)
 
-  const handleClickOpen = (id) => {
-    setOpen(true);
-    const selected = posts.filter(post => {return post.id === id})
-    setSelectedPosts(selected[0])
-  };
-  const handleClickOpenPost = (id) => {
-    setOpenPost(true);
-  };
-
-  const handleClickOpenProfile = (id) => {
-    setOpenProfile(true);
-  };
-
+ 
   const handleClose = () => {
     setOpen(false);
   };
-  const handleCloseProfile = () => {
-    setOpenProfile(false);
-  };
 
-  const handleClosePost = ()=> {
-       setOpenPost(false)
-  };
-
-  
+ 
   useEffect(() => {
-    const getPost = () => {
-      const newPost  = [];
-      db.collection('posts')
-        .where("userUID", "==",userUID)
-        .onSnapshot(snapshot => {
-          newPost.push(snapshot.docs.map(doc =>{
-               return ({ post: doc.data(), id: doc.id})
-            }))   
-        }) 
-      return {newPost}; 
+    
+    setloading(true)
+    const getData = async () => {
+      await db.collection('posts')
+      .orderBy('createdAt', 'desc')
+      .where("userUID" , "==", userUID)
+      .onSnapshot(snapshot => {
+        setPosts(snapshot.docs.map(doc =>
+           ({
+             post: doc.data(),
+             id: doc.id
+            })
+        ))
+        setloading(false)  
+      })  
     }
-    let {newPost} = getPost();
-     
-     setPosts(newPost)
+    getData();  
  }, [userUID])
-
+ 
+ 
     return (
         <div className="profile">
           <div className="profile__header">
               <div>
-                <Avatar className="profile__avatar" src={photoUrl}  alt={username}/>
+                <Avatar style={{ width: "70px" , height: "70px"}} src={photoUrl}  alt={username}/>
               </div>
               <div className="profile__info">
-                  <h2>{username}</h2>
+                  <h4>{username}</h4>
                   <h6> <strong> {email}</strong></h6>
-                  <button onClick={handleClickOpenProfile}>Edit Profile</button>
+                  <div  className="profile__buttons">
+                      <button className="editProfile__button" onClick={() => history.push('/editProfile')}>Edit Profile</button>
+                      <NewPost open={open} handleClose={handleClose}/>
+                      <button className="add__button" onClick={() => setOpen(true)}><AddIcon/></button>
+                  </div>
+                 
               </div>
           </div>
-          <EditPost open={openProfile} handleClose={handleCloseProfile}/>
-
           <div className="profile__imagesContainer">
-              <div className="profile__addPost">
-                  <h3>My Posts</h3>
-                  <button className="add__button" onClick={handleClickOpenPost}><AddIcon/> Add Post</button>
-              </div>
-             <NewPost posts={selectedPosts} open={openPost} handleClose={handleClosePost}/>
-              <Grid container spacing={3}>
-                  {posts && posts.map(post => {
-                      return(
-                        <Grid onClick={handleClickOpen(post.id)} key={post.id} item x2={12} sm={4} md={3} className="profile__imageContainer">
-                        <img className="profile__image" src={post.post.imageUrl} alt="my post"></img> 
-                        <div className="img__icons">
-                            <span className="icon"> {post.post.likes}<FavoriteBorderIcon/></span>
-                            <span  className="icon"><WhatsAppIcon/></span>
-                       </div> 
-                     </Grid>
-                      )
-                      
-                  })}
-                  <ViewPost open={open} handleClose={handleClose}/>
-               </Grid>
-             
+               {loading ? <Loading/> :
+              <> {posts.length  === 0 ? <div>No posts yet </div>  :  <Posts posts={posts}/>}</>
+               }
           </div>
         
         </div>

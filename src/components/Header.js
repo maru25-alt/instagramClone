@@ -62,7 +62,7 @@ export default function Header() {
                     </Link>
                 </Tooltip>
                 <Tooltip title="chat"  placement="bottom">
-                    <Link to="/">
+                    <Link to="/chat">
                         <TelegramIcon/>
                     </Link>
                 </Tooltip>
@@ -73,9 +73,9 @@ export default function Header() {
                     </Link>
                 </Tooltip>
                 <Tooltip title="add new post"  placement="bottom">
-                    <a href="/" onClick={handleOpen}>
+                    <span onClick={handleOpen}>
                         <AddCircleIcon/>
-                    </a>
+                    </span>
                 </Tooltip>
                 <CreatePost  handleClose={handleCloseCreatePost} open={open}/>
                 <Avatar className="avatar" src={photoUrl} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} alt={username}/>

@@ -108,7 +108,7 @@ export default function({handleClose, open}) {
                             </Button>
                                <img className="createpost__imageContainer" src={image} alt="upload_image"></img>
                             <TextareaAutosize onChangeCapture={handleChangeCaption} value={caption} rowsMin={10} className="textarea__caption" aria-label="empty textarea" placeholder="Write a caption..." />
-                            <Button onClick={handleShare} class="success share-button ">Share</Button>
+                            <Button onClick={handleShare} className="success share-button ">Share</Button>
                     </form> 
                 </DialogContent>
              : <div>
