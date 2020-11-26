@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Avatar, Button, LinearProgress, CircularProgress } from '@material-ui/core';
-import { auth, storage } from '../store/firebase';
+import { auth, storage, db } from '../store/firebase';
 import '../assets/css/editProfile.css'
 
 function EditProfile() {
@@ -66,6 +66,11 @@ function EditProfile() {
                             photoUrl: url
                         });
                         localStorage.setItem('userPhotoUrl', url)
+                        db.collection('users')
+                        .doc(user.uid)
+                        .update({
+                            photoUrl: url
+                        })
                         setshowProgress(false);
                         setimageData(null);
                         setshowButton(false);
@@ -83,6 +88,11 @@ function EditProfile() {
           user.updateProfile({
             displayName: username
           });
+          db.collection('users')
+            .doc(user.uid)
+            .update({
+                username
+            })
           localStorage.setItem('userName', username);
           localStorage.setItem('userEmail', email);
         } 

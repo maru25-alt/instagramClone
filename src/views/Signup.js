@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
 import '../assets/css/signin.css'
-import { auth } from '../store/firebase';
+import { auth, db } from '../store/firebase';
 import { useHistory } from "react-router-dom";
 import FacebookIcon from '@material-ui/icons/Facebook';
 
@@ -52,6 +52,13 @@ function Signup() {
         auth.createUserWithEmailAndPassword(email, password).then(res => {
             res.user.updateProfile({
                 displayName: username
+            })
+            db.collection('users')
+            .doc(res.user.uid)
+            .set({
+                username: username,
+                userID: res.user.uid,
+                photoURL: res.user.photoUrl
             })
             localStorage.setItem('userUID', res.user.uid);
             localStorage.setItem('userName', username);
