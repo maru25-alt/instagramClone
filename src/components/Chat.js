@@ -1,7 +1,5 @@
 import React , { useState, useEffect} from 'react';
 import { IconButton, Avatar } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MicNoneIcon from '@material-ui/icons/MicNone';
 import Message from './Message'
 import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';

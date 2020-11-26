@@ -29,7 +29,6 @@ function Profile() {
 
  
   useEffect(() => {
-    
     setloading(true)
     const getData = async () => {
       await db.collection('posts')
@@ -46,7 +45,7 @@ function Profile() {
       })  
     }
     getData();  
- }, [userUID])
+ }, [])
  
  
     return (

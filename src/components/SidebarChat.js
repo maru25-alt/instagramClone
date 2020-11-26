@@ -1,10 +1,8 @@
 import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import ChatIcon from '@material-ui/icons/Chat';
-import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
-import { IconButton, Avatar} from '@material-ui/core';
+import { IconButton} from '@material-ui/core';
 import BarChat from './BarChat'
 import { db} from '../store/firebase';
 import { useState, useEffect } from 'react';
