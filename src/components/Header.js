@@ -17,6 +17,9 @@ import CreatePost from './CreatePost'
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const photoUrl = localStorage.getItem('userPhotoUrl')
+  const username = localStorage.getItem('userName');
+  const userID = localStorage.getItem('userUID')
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,8 +35,8 @@ export default function Header() {
   };
 
   const handleClose = () => {
-      history.push('/profile')
-    setAnchorEl(null);
+      history.push(`/profile/${username}/${userID}`)
+      setAnchorEl(null);
   }
 
 
@@ -45,8 +48,7 @@ export default function Header() {
       })
   }
 
-  const photoUrl = localStorage.getItem('userPhotoUrl')
-  const username = localStorage.getItem('userName')
+  
     return (
         <div className="header">
             <div className="header__imageContainer">
@@ -78,7 +80,13 @@ export default function Header() {
                     </span>
                 </Tooltip>
                 <CreatePost  handleClose={handleCloseCreatePost} open={open}/>
-                <Avatar className="avatar" src={photoUrl} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} alt={username}/>
+                <Avatar 
+                className="avatar" 
+                src={photoUrl} 
+                aria-controls="simple-menu" 
+                aria-haspopup="true" 
+                onClick={handleClick} 
+                alt={username?.toUpperCase()}/>
                 <Menu
                     id="simple-menu"
                     anchorEl={anchorEl}

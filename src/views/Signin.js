@@ -1,14 +1,14 @@
 import React, { useState , useEffect} from 'react'
 import { toast } from 'react-toastify';
 import '../assets/css/signin.css'
-import { auth } from '../store/firebase';
+import { auth , provider} from '../store/firebase';
 import { useHistory } from "react-router-dom";
 
 
 function Signin() {
     
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("rudomapfumba@gmail.com");
+    const [password, setPassword] = useState("qwe123456");
 
     let history = useHistory();
 
@@ -25,6 +25,12 @@ function Signin() {
          else if(e.target.name === "password"){
              setPassword(e.target.value)
          }
+    }
+
+    const handleFacebookSignin = (e) => {
+        auth.signInWithPopup(provider).then(user => {
+            console.log(user)
+        })
     }
     
     const handleSignin = (e) => {
@@ -81,9 +87,9 @@ function Signin() {
                     <span className="line line2">  <hr></hr></span>
                 </div>
                 
-                    <a href="/" className="signin__facebookLink">Log in with Facebook</a>
+                    <button onClick={handleFacebookSignin} className="signin__facebookLink">Log in with Facebook </button>
                
-                   <a href="/" className="signin__forgetPassword">Forget password?</a>
+                   <a href="/forgetpassword" className="signin__forgetPassword">Forget password?</a>
                </div>
             <div className="signin__signupContainer">
                 <h5>Don't have an account? <a href="/signup" className="link">Sign up</a></h5>

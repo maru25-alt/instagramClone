@@ -26,7 +26,7 @@ function Mypost() {
      console.log(posts)
     return (
         <div className="posts">
-            <h4>{username} Posts</h4>
+            <h1>{username}'s Posts</h1>
             <br></br>
             {posts && posts.map(post => {
                  return( 

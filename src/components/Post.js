@@ -55,14 +55,14 @@ function Post({post, id}) {
         .doc(id)
         .get()
         .then(doc =>{ 
-           const likes =  doc.data().likes;
+           const newlikes =  doc.data().likes;
            // console.log(doc.data())
           console.log(like)
           if(like){
-            db.collection('posts').doc(id).update({likes:likes - 1})
+            db.collection('posts').doc(id).update({likes:newlikes - 1})
           }
           else{
-            db.collection('posts').doc(id).update({likes:likes + 1})
+            db.collection('posts').doc(id).update({likes:newlikes + 1})
           }
            
         })
@@ -92,13 +92,16 @@ function Post({post, id}) {
         <div className="post">
           {/* header   */}
           <div className="post__header">
-            <div className="post__headerLeft">
+              <a className="post__headerLeft" href={`/profile/${username}/${userUID}`}>
               <Avatar
                 className="post__avatar"
                 src={userPhotoUrl}
-                alt={username} />
+                alt={username?.toUpperCase()}
+               
+                 />
                 <h3>{username}</h3>
-            </div>
+              </a>
+          
             <div>
               <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleOpenMenu}>
                   <MoreHorizIcon/>

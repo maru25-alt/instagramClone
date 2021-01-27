@@ -1,125 +1,125 @@
-.signin{
-    display: flex;
-    flex-direction: column;
-    place-items: center;
-
+.signin {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
 }
-.signin__container{
-    width: 50vw;   
+.signin__container {
+  width: 50vw;
 }
 @media only screen and (max-width: 600px) {
-    .signin__container{
-        width: 80vw;   
-    }
+  .signin__container {
+    width: 80vw;
+  }
 }
 
-.signin__formContainer{
-    margin-top: 50px;
-    background-color: white;
-    border: 1px solid lightgray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.signin__formContainer {
+  margin-top: 50px;
+  background-color: white;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.signin__form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 2em 0;
-}
-
-input{
-    width: 80%;
-    padding: 0.8em;
-    margin-bottom: 1em;
-    background-color: #efefef;
-    border: 1px solid lightgray;
+.signin__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2em 0;
 }
 
-button{
-    width: 85%;
-    padding: 0.8em ;
-    margin-top: 0.5em;
-    border: none;
-    color: white;
-    font-weight: bolder;
-    border-radius: 5px;
-    background-color: lightskyblue;
+input {
+  width: 80%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  background-color: #efefef;
+  border: 1px solid lightgray;
 }
 
-.signin__or-section{
-    display: flex;
-    place-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 2em;
-    
-}
-.signin__logo{
-    object-fit: contain;
-    max-width: 10em;
-}
-.signin__facebookLink{
-    font-size: 1.2em;
-    margin-bottom: 0.7em;
-}
-.signup__facebookLink{
-    font-size: 1.2em;
-    margin-bottom: 0.7em;
-    background-color: royalblue;
-    color: #ffffff;
-    width: 60%;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
-    margin: 0.5em 0;
-    
-}
-.signin__forgetPassword{
-   color: #000;
-   margin-bottom: 2em;
-   font-size: 0.5em !important;
-}
-.line{
-    width: 35%;
-    color: lightgray;
-}
-.line1{
-    margin-right:20px ;
-}
-.line2{
-    margin-left:20px ;
+button {
+  width: 85%;
+  padding: 0.8em;
+  margin-top: 0.5em;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  border-radius: 5px;
+  background-color: lightskyblue;
 }
 
-.signin__signupContainer{
-    background-color: white;
-    margin: 20px 0;
-    background-color: white;
-    border: 1px solid lightgray;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+.signin__or-section {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2em;
 }
-.signin__signupContainer h5{
-   font-size: medium;
-   font-weight: normal;
+.signin__logo {
+  object-fit: contain;
+  max-width: 10em;
+}
+.signin__facebookLink {
+  font-size: 1.2em;
+  margin-bottom: 0.7em;
+}
+.signup__facebookLink {
+  font-size: 1.2em;
+  margin-bottom: 0.7em;
+  background-color: royalblue;
+  color: #ffffff;
+  width: 60%;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.signin__forgetPassword {
+  color: #000;
+  margin-bottom: 2em;
+  font-size: 0.8em !important;
+}
+.line {
+  width: 35%;
+  color: lightgray;
+}
+.line1 {
+  margin-right: 20px;
+}
+.line2 {
+  margin-left: 20px;
 }
 
-.link{
-    color: lightskyblue;
-    font-weight: bolder;
-    font-size: 0.5em;
+.signin__signupContainer {
+  background-color: white;
+  margin: 20px 0;
+  background-color: white;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+.signin__signupContainer h5 {
+  font-weight: normal;
+  font-size: 1em;
 }
 
-.signup__text{
-    font-weight: bolder;
-    opacity: 0.5;
-    text-align: center;
+.link {
+  color: lightskyblue;
+  font-weight: bolder;
+  font-size: 0.8em;
 }
 
-.signup__policyText{
-   width: 80%;
-   margin-bottom: 2em;
+.signup__text {
+  font-weight: bolder;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.signup__policyText {
+  width: 80%;
+  margin-bottom: 2em;
 }

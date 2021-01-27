@@ -30,9 +30,9 @@ export default function TitlebarGridList({posts}) {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList} cols={3}>
-        {posts.map((post) => (
-               <GridListTile key={post.id} onClick={() => history.push('/myPosts')}>
+      <GridList cellHeight={280} className="gridList">
+        {posts.map((post, index) => (
+               <GridListTile cols={index % 3 === 0 ? 2 : 1} rows={index % 3 === 0 ? 2 : 1} key={post.id} onClick={() => history.push('/myPosts')}>
                  <img src={post.post?.imageUrl} alt={post.id} />
                </GridListTile>
         ))}

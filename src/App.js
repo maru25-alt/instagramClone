@@ -7,7 +7,8 @@ import Signin from './views/Signin';
 import Profile from './views/Profile';
 import EditProfie from './views/EditProfile';
 import MyPost from './views/Mypost'
-import Chat from './views/Chat'
+import Chat from './views/Chat';
+import ResetPassword from './views/ForgetPassword'
 import {ToastContainer} from 'react-toastify';
 import Header from './components/Header'
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,10 +31,13 @@ function App() {
             <Route path="/signin">
               <Signin/>
             </Route>
+            <Route path="/forgetpassword">
+              <ResetPassword/>
+            </Route>
             <Route path="/signup">
               <Signup/>
             </Route>
-            <Route path="/profile">
+            <Route path="/profile/:username/:id">
               <Header/>
               <Profile/>
             </Route>

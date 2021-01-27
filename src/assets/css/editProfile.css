@@ -45,3 +45,12 @@
   left: 50%;
   transform: translate(-50%);
 }
+
+.gridList {
+  width: 800;
+  height: 450;
+}
+
+.gridList:-webkit-scrollbar {
+  display: "none";
+}
